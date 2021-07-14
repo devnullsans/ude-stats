@@ -101,7 +101,7 @@
     }
   </style>
   <script defer>
-    const Data = JSON.parse(localStorage.getItem('save')) ? ? {};
+    const Data = JSON.parse(localStorage.getItem('UDEsave')) ? ? {};
 
     const showLS = document.getElementById('ls');
     const searchOP = document.getElementById('op');
@@ -167,7 +167,7 @@
     };
 
     window.onbeforeunload = function() {
-      localStorage.setItem('save', JSON.parse(Data));
+      localStorage.setItem('UDEsave', JSON.parse(Data));
     };
   </script>
   <title>UDE Stats</title>

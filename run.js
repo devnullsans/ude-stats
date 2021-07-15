@@ -64,5 +64,5 @@ window.onload = function() {
 };
 
 window.onbeforeunload = function() {
-	localStorage.setItem('UDEsave', JSON.parse(Data));
+	localStorage.setItem('UDEsave', JSON.stringify(Data));
 };

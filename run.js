@@ -41,6 +41,7 @@ pushFM.onsubmit = function(ev) {
     got.dif = Math.floor((got.max + got.min) / 2);
     got.avg = Math.round(got.red.reduce((s, n) => s + n) / got.red.length);
     const el = document.getElementById(name);
+    el.children[0].innerText = `${name}(${got.red.len})`;
     el.children[1].innerText = got.min;
     el.children[2].innerText = got.avg;
     el.children[3].innerText = got.dif;
@@ -54,8 +55,8 @@ pushFM.onsubmit = function(ev) {
       avg: price,
     };
     const el = document.createElement('article');
-    el.innerHTML = `<div class="tx"></div><div class="mv">${price}</div><div class="mv">${price}</div><div class="mv">${price}</div><div class="mv">${price}</div>`;
-    el.firstElementChild.innerText = el.id = name;
+    el.innerHTML = `<div class="tx">${name}(1)</div><div class="mv">${price}</div><div class="mv">${price}</div><div class="mv">${price}</div><div class="mv">${price}</div>`;
+    el.id = name;
     showLS.appendChild(el);
   }
   pushFM.reset();
@@ -63,7 +64,7 @@ pushFM.onsubmit = function(ev) {
 };
 
 window.onload = function() {
-  showLS.innerHTML = Object.entries(Data).map(([key, { min, avg, dif, max }]) => `<article id="${key}"><div class="tx">${key}</div><div class="mv">${min}</div><div class="mv">${avg}</div><div class="mv">${dif}</div><div class="mv">${max}</div></article>`).join('');
+  showLS.innerHTML += Object.entries(Data).map(([key, { red, min, avg, dif, max }]) => `<article id="${key}"><div class="tx">${key}(${red.length})</div><div class="mv">${min}</div><div class="mv">${avg}</div><div class="mv">${dif}</div><div class="mv">${max}</div></article>`).join('');
 };
 
 window.onbeforeunload = function() {
